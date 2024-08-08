@@ -12,18 +12,18 @@ MANDIR = $(PREFIX)/share/man
 SRCDIR = src
 
 PKGS   = wayland-client wayland-cursor pangocairo
-FILES  = $(SRCDIR)/main.c $(SRCDIR)/main.h $(SRCDIR)/log.c $(SRCDIR)/log.h \
-		 $(SRCDIR)/render.c $(SRCDIR)/render.h $(SRCDIR)/event.c $(SRCDIR)/event.h \
-		 $(SRCDIR)/util.c $(SRCDIR)/util.h $(SRCDIR)/shm.c $(SRCDIR)/shm.h \
-		 $(SRCDIR)/input.c $(SRCDIR)/input.h $(SRCDIR)/user.c $(SRCDIR)/user.h \
-		 $(SRCDIR)/bar.c $(SRCDIR)/bar.h $(SRCDIR)/config.h
+FILES  = $(SRCDIR)/main.c $(SRCDIR)/log.c \
+		 $(SRCDIR)/render.c $(SRCDIR)/event.c \
+		 $(SRCDIR)/util.c $(SRCDIR)/shm.c \
+		 $(SRCDIR)/input.c $(SRCDIR)/user.c \
+		 $(SRCDIR)/bar.c
 OBJS   = $(SRCDIR)/xdg-output-unstable-v1-protocol.o $(SRCDIR)/xdg-shell-protocol.o \
 		 $(SRCDIR)/wlr-layer-shell-unstable-v1-protocol.o
 OBJS  := $(filter-out $(SRCDIR)/xdg-output-unstable-v1-protocol.o,$(OBJS))
 OBJS  += $(SRCDIR)/dwl-ipc-unstable-v2-protocol.o
 
 ## Compile Flags
-CC        = gcc
+CC        = clang
 BARCFLAGS = `$(PKG_CONFIG) --cflags $(PKGS)` $(CFLAGS)
 BARLIBS   = `$(PKG_CONFIG) --libs $(PKGS)` $(LIBS)
 
