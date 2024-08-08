@@ -15,7 +15,12 @@ I'm not sure what the package names will be for your distrobution, so just make 
 Compile with `make`, install with `make install`, uninstall `make uninstall`.
 
 ## Configuration
-Like most suckless-like software, configuration is done through `src/config.def.h` modify it to your heart's content. dwl-bar is compatible with [someblocks](https://sr.ht/~raphi/someblocks/) for status.
+Like most suckless-like software, configuration is done through `src/config.def.h` modify it to your heart's content. dwl-bar is compatible with [someblocks](https://sr.ht/~raphi/someblocks/) for status. Example:
+```sh
+sudo rm /run/user/1000/dwl-bar > /dev/null
+someblocks -s /run/user/1000/dwl-bar &
+/home/lexa/Documents/dwl-bar/dwl-bar
+```
 
 If you want dwl-bar to control dwl (via mouse gestures primarily) you may want to apply the [ipc](https://github.com/MadcowOG/dwl-bar/wiki/ipc) patch. 
 **However, do note that you will also need to apply the [ipc](https://github.com/djpohly/dwl/wiki/ipc) patch for dwl.**
