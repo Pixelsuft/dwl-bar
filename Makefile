@@ -28,7 +28,7 @@ OBJS  := $(filter-out $(SRCDIR)/xdg-output-unstable-v1-protocol.o,$(OBJS))
 OBJS  += $(SRCDIR)/dwl-ipc-unstable-v2-protocol.o
 
 ## Compile Flags
-CC        = clang
+CC        = gcc
 BARCFLAGS = `$(PKG_CONFIG) --cflags $(PKGS)` $(CFLAGS)
 BARLIBS   = `$(PKG_CONFIG) --libs $(PKGS)` $(LIBS)
 
