@@ -17,6 +17,11 @@ FILES  = $(SRCDIR)/main.c $(SRCDIR)/log.c \
 		 $(SRCDIR)/util.c $(SRCDIR)/shm.c \
 		 $(SRCDIR)/input.c $(SRCDIR)/user.c \
 		 $(SRCDIR)/bar.c
+H_FILES  = $(SRCDIR)/main.h $(SRCDIR)/log.h \
+		 $(SRCDIR)/render.h $(SRCDIR)/event.h \
+		 $(SRCDIR)/util.h $(SRCDIR)/shm.h \
+		 $(SRCDIR)/input.h $(SRCDIR)/user.h \
+		 $(SRCDIR)/bar.h $(SRCDIR)/config.h
 OBJS   = $(SRCDIR)/xdg-output-unstable-v1-protocol.o $(SRCDIR)/xdg-shell-protocol.o \
 		 $(SRCDIR)/wlr-layer-shell-unstable-v1-protocol.o
 OBJS  := $(filter-out $(SRCDIR)/xdg-output-unstable-v1-protocol.o,$(OBJS))
@@ -32,8 +37,8 @@ WAYLAND_PROTOCOLS = `$(PKG_CONFIG) --variable=pkgdatadir wayland-protocols`
 
 
 all: dwl-bar
-dwl-bar: $(FILES) $(OBJS)
-	$(CC) $^ $(BARLIBS) $(BARCFLAGS) -o $@
+dwl-bar: $(FILES) $(H_FILES) $(OBJS)
+	$(CC) $(FILES) $(OBJS) $(BARLIBS) $(BARCFLAGS) -o $@
 $(SRCDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/%.h
 	$(CC) -c $< $(BARLIBS) $(BARCFLAGS) -o $@
 
